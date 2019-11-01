@@ -6,15 +6,7 @@ const client = new Discord.Client();
 var isReady = true;
 
 client.once('ready', () => {
-    console.log('Ready!');
-    // Get the channel via ID
-    // let channel = client.channels.get('81385020756865024');
-    // Or via name (less persistent)
-    let channel = client.channels.find('test-bot');
-
-    channel.join()
-    .then(connection => console.log('Connected'))
-    .catch(console.error);
+	console.log('Ready!');
 });
 
 client.on('message', message => {

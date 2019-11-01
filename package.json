@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/camilo-nunez/wawy-bot#readme",
   "dependencies": {
-    "discord.js": "^11.5.1"
+    "discord.js": "github:discordjs/discord.js",
+    "node-opus": "^0.3.3",
+    "opusscript": "0.0.7"
   }
 }
