@@ -10,16 +10,26 @@ client.once('ready', () => {
 });
 
 client.on('message', async message => {
-	if(message.content.startsWith(`${prefix}cmd1`)){
+    if (!message.content.startsWith(prefix) || message.author.bot) return;
+
+    const args = message.content.slice(prefix.length).split(' ');
+    const command = args.shift().toLowerCase();
+
+    if (command === 'aoe') {
+        if (!args.length) {
+            return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
+        }
+
         if (message.member.voice.channel) {
             const connection = await message.member.voice.channel.join();
-            const dispatcher = connection.play('./sounds/maledeath4.mp3');
+            const dispatcher = connection.play(`./sounds/eoa2-taunt-spa/${args}.mp3`);
             dispatcher.on('finish', () => {
                 console.log('Finished playing!');
               });
           } else {
             message.reply('You need to join a voice channel first!');
           }
+    
         
     }
     
