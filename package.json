@@ -17,8 +17,14 @@
   },
   "homepage": "https://github.com/camilo-nunez/wawy-bot#readme",
   "dependencies": {
+    "bufferutil": "^4.0.1",
     "discord.js": "github:discordjs/discord.js",
+    "erlpack": "github:discordapp/erlpack",
+    "ffmpeg": "0.0.4",
+    "libsodium-wrappers": "^0.7.6",
     "node-opus": "^0.3.3",
-    "opusscript": "0.0.7"
+    "opusscript": "0.0.7",
+    "zlib-sync": "^0.1.6",
+    "zucc": "^0.1.2"
   }
 }
