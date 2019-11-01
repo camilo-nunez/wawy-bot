@@ -20,16 +20,18 @@ client.on('message', async message => {
             return message.channel.send(`You didn't provide any arguments, ${message.author}!`);
         }
 
-        if (message.member.voice.channel) {
-            const connection = await message.member.voice.channel.join();
-            const dispatcher = connection.play(`./sounds/eoa2-taunt-spa/${args}.mp3`);
-            dispatcher.on('finish', () => {
-                console.log('Finished playing!');
-              });
-          } else {
-            message.reply('You need to join a voice channel first!');
-          }
-    
+        if(Number(args)>=1 && Number(args)<=42){
+            if (message.member.voice.channel) {
+                const connection = await message.member.voice.channel.join();
+                const dispatcher = connection.play(`./sounds/eoa2-taunt-spa/${args}.mp3`);
+                dispatcher.setVolume(0.5);
+                dispatcher.on('finish', () => {
+                    console.log('Finished playing!');
+                    });
+            } else {
+                message.reply('You need to join a voice channel first!');
+            }
+        }
         
     }
     
