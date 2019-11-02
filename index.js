@@ -22,7 +22,7 @@ async function aoeMusic(message){
 
     if(message.member.voice.channel) {
         
-        message.channel.send(`**Canción seleccionada ${songs[select]}**`);
+        message.channel.send(`**Canción seleccionada: ${songs[select]}**`);
 
         const connection = await message.member.voice.channel.join();
         const dispatcher = connection.play(`./sounds/AoE-II-1999/${select}.ogg`);
@@ -60,7 +60,7 @@ function aoeHelp(message){
 	.setDescription('Bot qlo en honor a Wawito que en paz descanse.')
 	.addField('**help**','Lista de comandos')
 	.addField('**aoe <Número>** (Entre 1 y 42, inclusive)','Reproduce audio del chat de AoC')
-    .addField('**aoe music**','En desarrollo...')
+    .addField('**aoe music**','Reproduce de manera aleatoria uno de los 19 temas de AoE II de 1999.')
     .addField('**clear**', 'Borra los últimos 100 mensajes!')
     .setImage('https://scontent-scl1-1.xx.fbcdn.net/v/t1.0-9/554023_555286944488125_1319107508_n.jpg?_nc_cat=107&_nc_oc=AQkszqOYJqDIJH6za61HgNrk1ZoriwneYoQxb-jUSC-kCZPTjwkY_fho26FpIJRClRM&_nc_ht=scontent-scl1-1.xx&oh=a97bd8e6744808a08bbee70971148f57&oe=5E640F71');
     
