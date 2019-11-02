@@ -13,8 +13,26 @@ function aoeClear(message){
     message.channel.bulkDelete(100, true);
 }
 
-function aoeMusic(message){
-    return message.channel.send(`En desarrollo..., ${message.author}!`);
+async function aoeMusic(message){
+    const songs = [
+        "Quest_for_Butter","Shamburger","I_Will_Beat_on_Your_Behind","Drizzle_(Firelight_Smoove_Mix)","Machina_del_Diablo","T_Station","Bass_Bag_(Album_Version)","Ride,_Lawrence,_Ride!","Smells_Like_Crickets,_Tastes_Like_Chicken","Operation_Monkey","Tazer","Uluzah","Carne_y_Helado","Rich_Corinthian_Leather","Where_Credit_is_Due","Joey_JoJo"
+    ]
+
+    const select = Math.floor(Math.random() * songs.length);
+
+    if(message.member.voice.channel) {
+        
+        message.channel.send(`**Canción seleccionada ${songs[select]}**`);
+
+        const connection = await message.member.voice.channel.join();
+        const dispatcher = connection.play(`./sounds/AoE-II-1999/${select}.ogg`);
+        dispatcher.setVolume(0.5);
+        dispatcher.on('finish', () => {
+            console.log('Finished playing!');
+        });
+    } else {
+        message.reply('¡Primero debes unirte a un canal de voz!');
+    }
 }
 
 async function aoeChat(number, message){
@@ -28,7 +46,7 @@ async function aoeChat(number, message){
         dispatcher.setVolume(0.5);
         dispatcher.on('finish', () => {
             console.log('Finished playing!');
-            });
+        });
     } else {
         message.reply('¡Primero debes unirte a un canal de voz!');
     }
@@ -44,6 +62,7 @@ function aoeHelp(message){
 	.addField('**aoe <Número>** (Entre 1 y 42, inclusive)','Reproduce audio del chat de AoC')
     .addField('**aoe music**','En desarrollo...')
     .addField('**clear**', 'Borra los últimos 100 mensajes!')
+    .setImage('https://scontent-scl1-1.xx.fbcdn.net/v/t1.0-9/554023_555286944488125_1319107508_n.jpg?_nc_cat=107&_nc_oc=AQkszqOYJqDIJH6za61HgNrk1ZoriwneYoQxb-jUSC-kCZPTjwkY_fho26FpIJRClRM&_nc_ht=scontent-scl1-1.xx&oh=a97bd8e6744808a08bbee70971148f57&oe=5E640F71');
     
     return message.channel.send(helpEmbed);
 }
