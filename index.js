@@ -25,7 +25,7 @@ async function aoeMusic(message){
         message.channel.send(`**Canción seleccionada: ${songs[select]}**`);
 
         const connection = await message.member.voice.channel.join();
-        const dispatcher = connection.play(`./sounds/AoE-II-1999/${select}.ogg`);
+        const dispatcher = connection.play(`./sounds/AoE-II-1999/${select+1}.ogg`);
         dispatcher.setVolume(0.5);
         dispatcher.on('finish', () => {
             console.log('Finished playing!');
